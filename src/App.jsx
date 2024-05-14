@@ -23,7 +23,6 @@ function App() {
           <Route path="/champions/:championId" element={<ChampDetails />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        <p className="random">GG WP</p>
         <Footer />
       </Flex>
     </BrowserRouter>
