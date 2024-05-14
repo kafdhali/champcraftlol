@@ -21,8 +21,10 @@ function AboutPage() {
               Khaled Afdhal
             </Heading>
             <Text mt={2}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
-              purus consequat, tincidunt libero vitae, consectetur ante.
+              Meet Khaled, a versatile individual fueled by innovation and
+              creativity. With a diverse range of interests spanning technology
+              and beyond, Khaled embraces challenges to make a positive impact.
+              Explore endless possibilities with Khaled!
             </Text>
           </Box>
           <Box textAlign="center">
@@ -37,8 +39,10 @@ function AboutPage() {
               Alexandre Cabral
             </Heading>
             <Text mt={2}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
-              purus consequat, tincidunt libero vitae, consectetur ante.
+              Meet Alex, a dynamic individual passionate about innovation and
+              creativity. Known for diverse interests and expertise in
+              technology and beyond, Alex seeks new challenges to make a
+              positive impact. Discover endless possibilities with Alex!
             </Text>
           </Box>
         </Box>

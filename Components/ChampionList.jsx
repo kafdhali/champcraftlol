@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import axios from "axios";
 import {
   SimpleGrid,
@@ -19,10 +20,11 @@ function ChampionList() {
       .get("https://champcraft.adaptable.app/champions") //api end-point champions
       .then((response) => {
         setChampions(response.data);
-        // Initialize updatedData state with each champion's ID as key and empty lane and price as value
         const initialUpdatedData = {};
         response.data.forEach((champion) => {
-          initialUpdatedData[champion.id] = { lane: "", price: "" };
+          if (!updatedData[champion.id]) {
+            initialUpdatedData[champion.id] = { lane: "", price: "" };
+          }
         });
         setUpdatedData(initialUpdatedData);
       })
@@ -73,7 +75,13 @@ function ChampionList() {
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
         {champions.map((champion) => (
           <Box key={champion.id} boxShadow="md" p="4" rounded="md">
-            <img src={champion.thumbnail} alt={champion.name} />
+            <RouterLink to={`/champions/${champion.id}`}>
+              <img
+                src={champion.thumbnail}
+                alt={champion.name}
+                style={{ display: "block", margin: "0 auto" }}
+              />
+            </RouterLink>
             <Box mt="4">
               <h2>{champion.name}</h2>
               <p>{champion.description}</p>
@@ -99,7 +107,7 @@ function ChampionList() {
                 <FormLabel>New Lane</FormLabel>
                 <Input
                   type="text"
-                  value={updatedData[champion.id].lane}
+                  value={updatedData[champion.id]?.lane}
                   onChange={(e) =>
                     setUpdatedData({
                       ...updatedData,
@@ -115,7 +123,7 @@ function ChampionList() {
                 <FormLabel>New Price</FormLabel>
                 <Input
                   type="text"
-                  value={updatedData[champion.id].price}
+                  value={updatedData[champion.id]?.price}
                   onChange={(e) =>
                     setUpdatedData({
                       ...updatedData,

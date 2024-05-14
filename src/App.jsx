@@ -8,6 +8,7 @@ import ChampionList from "../Components/ChampionList";
 import Footer from "../Components/Footer";
 import Sidebar from "../Components/Sidebar";
 import ContactUs from "../Components/ContactUs";
+import ChampDetails from "../Components/ChampDetails";
 
 function App() {
   return (
@@ -19,9 +20,10 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/champions" element={<ChampionList />} />
+          <Route path="/champions/:championId" element={<ChampDetails />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        <p className="read-the-docs">Enjoy!</p>
+        <p className="random">GG WP</p>
         <Footer />
       </Flex>
     </BrowserRouter>
