@@ -1,13 +1,73 @@
-import { Link } from "react-router-dom";
+import { Box, Heading, Text, Avatar, VStack } from "@chakra-ui/react";
 import Footer from "./Footer";
 
 function AboutPage() {
   return (
-    <div className="AboutPage">
-      <h2>ChampCraft</h2>
-      <h1>Made by Alex and Khaled</h1>
-    </div>
+    <Box p={8}>
+      <Heading as="h1" size="xl" mb={4}>
+        About Us
+      </Heading>
+      <VStack spacing={8}>
+        <Box display="flex" justifyContent="space-around" alignItems="center">
+          <Box textAlign="center">
+            <Avatar
+              size="xl"
+              name="Your Name"
+              src="https://i.ibb.co/FXsmxnV/profile-pic-7.png"
+              mb={4}
+              mx="auto"
+            />
+            <Heading as="h2" size="lg">
+              Khaled Afdhal
+            </Heading>
+            <Text mt={2}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
+              purus consequat, tincidunt libero vitae, consectetur ante.
+            </Text>
+          </Box>
+          <Box textAlign="center">
+            <Avatar
+              size="xl"
+              name="Co-worker's Name"
+              src="https://i.ibb.co/47N6nM1/profile-pic-8.png"
+              mb={4}
+              mx="auto"
+            />
+            <Heading as="h2" size="lg">
+              Alexandre Cabral
+            </Heading>
+            <Text mt={2}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
+              purus consequat, tincidunt libero vitae, consectetur ante.
+            </Text>
+          </Box>
+        </Box>
+        <Box
+          bg="gray.200"
+          p={6}
+          borderRadius="md"
+          boxShadow="md"
+          textAlign="justify"
+        >
+          <Text fontSize="xl" as="em">
+            Welcome to ChampCraft, where you can personalize your League of
+            Legends champions like never before. <br />
+            <br />
+            Our team is driven by a passion for gaming and innovation, dedicated
+            to enhancing your League of Legends experience. <br />
+            <br />
+            Choose from a vast selection of champions, customize their abilities
+            and appearances, and create your dream roster. <br />
+            <br />
+            ChampCraft is more than an app; it's a community where you can share
+            and showcase your creations. <br />
+            <br />
+            Join us and redefine how you experience League of Legends with
+            ChampCraft today!
+          </Text>
+        </Box>
+      </VStack>
+    </Box>
   );
 }
-
 export default AboutPage;
