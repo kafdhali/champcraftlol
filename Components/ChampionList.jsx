@@ -9,7 +9,7 @@ import {
   FormControl,
   FormLabel,
 } from "@chakra-ui/react";
-import AddChampion from "./AddChampion";
+import ToggleAddChampion from "./ToggleAddChamp";
 
 function ChampionList() {
   const [champions, setChampions] = useState([]);
@@ -70,7 +70,7 @@ function ChampionList() {
 
   return (
     <Box>
-      <AddChampion setChampions={setChampions} />
+      <ToggleAddChampion setChampions={setChampions} />
       <h1>League Champions</h1>
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
         {champions.map((champion) => (

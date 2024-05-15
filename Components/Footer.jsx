@@ -55,12 +55,11 @@ function Footer() {
       bottom="0"
       left="0"
       right="0"
-      zIndex="999"
+      zIndex="999" // Use relative positioning
     >
       <Container
         as={Stack}
         maxW={"6xl"}
-        py={4}
         direction={{ base: "column", md: "row" }}
         spacing={4}
         justify={{ base: "center", md: "space-between" }}
