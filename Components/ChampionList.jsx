@@ -8,9 +8,11 @@ import {
   Input,
   FormControl,
   FormLabel,
+  Center,
 } from "@chakra-ui/react";
 import ToggleAddChampion from "./ToggleAddChamp";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function ChampionList() {
   const [champions, setChampions] = useState([]);
   const [updatedData, setUpdatedData] = useState({});
@@ -34,15 +36,38 @@ function ChampionList() {
   }, []);
 
   function HandleDelete(id) {
-    axios
-      .delete(`https://champcraft.adaptable.app/champions/${id}`)
-      .then((response) => {
-        console.log("Champion Deleted", response.data);
-        setChampions(champions.filter((champion) => champion.id !== id));
-      })
-      .catch((error) => {
-        console.log("Something Went Wrong", error);
-      });
+    const handleConfirm = () => {
+      axios
+        .delete(`https://champcraft.adaptable.app/champions/${id}`)
+        .then((response) => {
+          console.log("Champion Deleted", response.data);
+          setChampions(champions.filter((champion) => champion.id !== id));
+          toast.dismiss();
+        })
+        .catch((error) => {
+          console.log("Something Went Wrong", error);
+        });
+    };
+
+    toast(
+      ({ closeToast }) => (
+        <div>
+          <p>really?? are you sure???</p>
+          <Button colorScheme="red" size="sm" onClick={handleConfirm}>
+            Confirm
+          </Button>
+          <Button colorScheme="gray" size="sm" onClick={closeToast}>
+            Cancel
+          </Button>
+        </div>
+      ),
+      {
+        position: "top-center",
+        autoClose: false,
+        closeOnClick: false,
+        draggable: false,
+      }
+    );
   }
 
   function HandleUpdate(id) {
@@ -70,8 +95,16 @@ function ChampionList() {
 
   return (
     <Box>
+      <Center mt={4} mb={1}>
+        <RouterLink to="/">
+          <img
+            src="https://i.ibb.co/kHZ36CD/kv-Bm-OG4g-RTG9-PT76-Mdlkew-removebg-preview.png"
+            alt="champ-craft"
+          />
+        </RouterLink>
+      </Center>
       <ToggleAddChampion setChampions={setChampions} />
-      <h1>League Champions</h1>
+
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
         {champions.map((champion) => (
           <Box key={champion.id} boxShadow="md" p="4" rounded="md">
@@ -97,6 +130,7 @@ function ChampionList() {
               >
                 Delete
               </Button>
+
               <FormControl
                 as="form"
                 onSubmit={(e) => {
